@@ -1,0 +1,16 @@
+#!/bin/sh
+
+java -jar /usr/local/bin/rescale.jar \
+-X https://platform.rescale.jp/ list-info -a \
+-p ${RESCALE_API_TOKEN} \
+| jq -c '{code: .code, versionCode: .versions[].versionCode, allowdCoreTypes: .versions[].allowedCoreTypes[]}' \
+> apps.json
+
+
+java -jar /usr/local/bin/rescale.jar \
+-X https://platform.rescale.jp/ \
+list-info -c \
+-p ${RESCALE_API_TOKEN} | jq .' \
+> hw.json
+
+

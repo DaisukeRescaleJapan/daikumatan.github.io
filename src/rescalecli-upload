@@ -1,0 +1,15 @@
+#!/bin/sh
+
+declare -a files=($*)
+JP="https://platform.rescale.jp/"
+OPTION='upload'
+
+# -e: To see an extended set of metadata, use the -e flag in the upload call:
+# --quiet: to suppress non-json output from the command.
+
+java -jar /usr/local/bin/rescale.jar \
+-X ${JP} \
+--quiet ${OPTION} \
+-p ${RESCALE_API_TOKEN} \
+-f ${files[*]} \
+-e

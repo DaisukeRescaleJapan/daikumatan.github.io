@@ -1,0 +1,293 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>3. 計算結果のダウンロード (ファイル名を指定する方法) &mdash; Rescale CLI 虎の巻 0.1.0 ドキュメント</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Rescale CLI 虎の巻 0.1.0 ドキュメント" href="index.html"/>
+        <link rel="next" title="4. 実践的なジョブ投入方法" href="submitjob.html"/>
+        <link rel="prev" title="2. ファイルのアップロード" href="cli-upload-files.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Rescale CLI 虎の巻
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="setupcli-main.html">1. RescaleCLIのセットアップ方法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cli-upload-files.html">2. ファイルのアップロード</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">3. 計算結果のダウンロード (ファイル名を指定する方法)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">3.1. 前提</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">3.2. スクリプトのダウンロード</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">3.3. スクリプトの実行方法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">3.4. ソースコード例</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id9">3.5. 詳細情報</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="submitjob.html">4. 実践的なジョブ投入方法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inputFlag.html">5. ランスクリプトの設定方法 (Rescale Specific Flags for the Input Script)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proxy.html">6. Proxy を越える必要がある時</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">7. 参考サイト</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Rescale CLI 虎の巻</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>3. 計算結果のダウンロード (ファイル名を指定する方法)</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/cli-download-files.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>3. 計算結果のダウンロード (ファイル名を指定する方法)<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<div class="section" id="id2">
+<h2>3.1. 前提<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>下記を実施済みであること</p>
+<ul class="simple">
+<li><a class="reference internal" href="setupcli-main.html"><em>RescaleCLIのセットアップ方法</em></a></li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">注釈</p>
+<p class="last"><cite>rescale.jar</cite> の保存先が <cite>/usr/local/bin/rescale.jar</cite> であることに注意してくださ</p>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>3.2. スクリプトのダウンロード<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>以下より <cite>rescalecli-download</cite> をダウンロードしてください。</p>
+<blockquote>
+<div><a class="reference download internal" href="_downloads/rescalecli-download" download=""><code class="xref download docutils literal"><span class="pre">src/rescalecli-download</span></code></a></div></blockquote>
+<p>ダウンロードしたスクリプトに実行権限を付与します。</p>
+<div class="highlight-bash"><div class="highlight"><pre>chmod +x rescalecli-download
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>3.3. スクリプトの実行方法<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>対象とするジョブIDとダウロンドーロするファイル名を指定します。複数ファイルも指定することができます。ジョブIDが分からない方は &#8220;<a class="reference internal" href="jobId.html"><em>Rescale の ジョブID とは</em></a>&#8221; をご参照ください</p>
+<div class="literal-block-wrapper container" id="job-id">
+<div class="code-block-caption"><span class="caption-text">JOB_IDの指定</span><a class="headerlink" href="#job-id" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">JOB_ID</span><span class="o">=</span><span class="s1">&#39;XXXXXX&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper container" id="id5">
+<div class="code-block-caption"><span class="caption-text">ダウンロードしたいファイルネームの指定</span><a class="headerlink" href="#id5" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">FILE_NAME</span><span class="o">=</span><span class="s1">&#39;myFile1 myFile2 *.log&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper container" id="id6">
+<div class="code-block-caption"><span class="caption-text">スクリプトの実行</span><a class="headerlink" href="#id6" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre>./rescalecli-download <span class="si">${</span><span class="nv">JOB_ID</span><span class="si">}</span> <span class="si">${</span><span class="nv">FILE_NAME</span><span class="si">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id7">
+<h2>3.4. ソースコード例<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="literal-block-wrapper container" id="id8">
+<div class="code-block-caption"><span class="caption-text">ソースコード</span><a class="headerlink" href="#id8" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-bash"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="highlight"><pre><span class="ch">#!/bin/sh</span>
+<span class="nv">JOB_ID</span><span class="o">=</span><span class="nv">$1</span>
+<span class="nv">FILE_NAME</span><span class="o">=</span><span class="nv">$2</span>
+
+<span class="nv">JP</span><span class="o">=</span><span class="s2">&quot;https://platform.rescale.jp/&quot;</span>
+<span class="nv">OPTION</span><span class="o">=</span><span class="s1">&#39;sync&#39;</span>
+java -jar /usr/local/bin/rescale.jar <span class="se">\</span>
+-X <span class="si">${</span><span class="nv">JP</span><span class="si">}</span> <span class="si">${</span><span class="nv">OPTION</span><span class="si">}</span> <span class="se">\</span>
+-p <span class="si">${</span><span class="nv">RESCALE_API_TOKEN</span><span class="si">}</span> <span class="se">\</span>
+-j <span class="si">${</span><span class="nv">JOB_ID</span><span class="si">}</span> <span class="se">\</span>
+-f <span class="si">${</span><span class="nv">FILE_NAME</span><span class="si">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="section" id="id9">
+<h2>3.5. 詳細情報<a class="headerlink" href="#id9" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p><a class="reference internal" href="org-manu.html"><em>File Transfer Manual</em></a></p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="submitjob.html" class="btn btn-neutral float-right" title="4. 実践的なジョブ投入方法" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="cli-upload-files.html" class="btn btn-neutral" title="2. ファイルのアップロード" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Daisuke Nagao.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/translations.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
