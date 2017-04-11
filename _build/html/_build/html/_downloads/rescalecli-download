@@ -1,0 +1,11 @@
+#!/bin/sh
+JOB_ID=$1
+FILE_NAME=$2
+
+JP="https://platform.rescale.jp/"
+OPTION='sync'
+java -jar /usr/local/bin/rescale.jar \
+-X ${JP} ${OPTION} \
+-p ${RESCALE_API_TOKEN} \
+-j ${JOB_ID} \
+-f ${FILE_NAME}
